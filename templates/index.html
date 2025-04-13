@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>TODO App</title>
+</head>
+<body>
+    <h1>📝 TODO List</h1>
+    <form method="POST" action="/add">
+        <input type="text" name="content" placeholder="Add new task" required>
+        <button type="submit">Add</button>
+    </form>
+    <ul>
+        {% for task in tasks %}
+            <li>
+                {% if task[2] %}
+                    <s>{{ task[1] }}</s>
+                {% else %}
+                    {{ task[1] }}
+                {% endif %}
+                [<a href="/done/{{ task[0] }}">✔</a>]
+                [<a href="/delete/{{ task[0] }}">🗑</a>]
+            </li>
+        {% endfor %}
+    </ul>
+</body>
+</html>
