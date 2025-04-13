@@ -3,7 +3,6 @@ import sqlite3
 
 app = Flask(__name__)
 DB_NAME = "todo.db"
-
 def init_db():
     with sqlite3.connect(DB_NAME) as conn:
         conn.execute('''
@@ -42,4 +41,5 @@ def done(task_id):
 
 if __name__ == "__main__":
     init_db()
-    app.run(debug=True)
+    app.run(host="0.0.0.0", port=5000)
+
